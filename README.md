@@ -40,7 +40,7 @@ package com.melo.executor;
 
 import com.melo.thread.SendMsgThread;
 
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -58,7 +58,7 @@ public class ExecutorPoolTask {
         //开启的发送短信的线程数为处理器的2倍
         int corePoolSize = Runtime.getRuntime().availableProcessors() * 2;
         System.out.println("CPU处理器为：" + corePoolSize/2 + "个");
-        executor = new ThreadPoolExecutor(corePoolSize/2, corePoolSize, 3, TimeUnit.SECONDS,new LinkedBlockingDeque<Runnable>());
+        executor = new ThreadPoolExecutor(corePoolSize/2, corePoolSize, 3, TimeUnit.SECONDS,new LinkedBlockingQueue<>());
         String[] phoneArr = {"13621072323", "13621072312", "136210721323", "13621076523", "13621074523", "13621067523", "13621072328", "13621072723"};
         for (int i=0; i<phoneArr.length; i++) {
             executor.execute(new SendMsgThread(phoneArr[i]));
@@ -66,3 +66,4 @@ public class ExecutorPoolTask {
         executor.shutdown();
     }
 }
+
