@@ -12,9 +12,11 @@ import java.util.concurrent.TimeUnit;
  * on 2018/6/4.
  * @author Ablert
  */
+ 
 public class SendMsgThread implements Runnable {
 
     /** 发送的手机号 **/
+    
     private String telephone;
 
     public SendMsgThread(String telephone) {
@@ -48,6 +50,7 @@ import java.util.concurrent.TimeUnit;
  * on 2018/6/4.
  * @author Ablert
  */
+ 
 public class ExecutorPoolTask {
 
     public static void main(String[] args) {
